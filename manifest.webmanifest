@@ -1,0 +1,21 @@
+{
+  "id": "./",
+  "name": "Ghid Auto Plus",
+  "short_name": "Ghid Auto",
+  "description": "Organizează mașinile, verificările, costurile și întreținerea.",
+  "lang": "ro-RO",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#09111e",
+  "theme_color": "#0b1424",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

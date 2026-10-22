@@ -1,0 +1,29 @@
+GHID AUTO PLUS — MVP 1.0
+========================
+
+Ce conține
+- index.html: aplicația web.
+- manifest.webmanifest + icon.svg: metadate și pictogramă PWA.
+- sw.js: cache offline de bază.
+- confidentialitate.html și termeni.html: șabloane de documente care trebuie completate și verificate înainte de lansare.
+- DATE-DE-LANSARE.md: limitări și listă de verificare comercială.
+
+Cum se testează de pe telefon
+1. Deschide index.html în Chrome pentru testare locală.
+2. Pentru instalare PWA și funcționare offline reală, publică întregul folder pe o gazdă HTTPS (de exemplu GitHub Pages).
+3. Fișierul deschis direct ca file:// nu poate instala service worker-ul. În acest caz, aplicația rulează ca pagină locală, fără toate funcțiile PWA.
+
+Limitări esențiale
+- Acesta este un MVP web pentru testare, NU o lansare comercială completă.
+- Nu are autentificare, sincronizare cloud, backend, colectare centralizată de feedback sau plăți reale.
+- Premium demo este doar pentru testare; nu reprezintă o achiziție și nu trebuie prezentat ca acces plătit.
+- Datele utilizatorului sunt salvate local în browser; ștergerea datelor browserului poate elimina datele.
+- Nu publica politica de confidențialitate/termenii până nu înlocuiești câmpurile [completează...] și nu verifici documentele pentru operatorul real.
+- Pentru Google Play sunt necesare proiect Android real, testare pe dispozitive, semnare AAB, configurarea Play Console, declarații de confidențialitate/Data safety, suport și integrarea corectă a plăților dacă vinzi funcții digitale.
+- Codurile OBD și recomandările sunt orientative; nu înlocuiesc diagnoza profesionistă.
+
+Recomandare comercială
+1. Testează cu 5–10 șoferi.
+2. Repară erorile observate și verifică backup/restore pe un dispozitiv secundar.
+3. Validează ce funcții ar plăti utilizatorii.
+4. Abia apoi investește în backend, plăți și publicare.
