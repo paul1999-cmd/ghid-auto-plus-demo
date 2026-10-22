@@ -1,0 +1,31 @@
+
+name: Construire Android
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descarcă proiectul
+        uses: actions/checkout@v4
+
+      - name: Configurează Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Configurează Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verifică instrumentele Android
+        run: |
+          java -version
+          node --version
+          npm --version
+          echo "Mediul de compilare este pregătit."
