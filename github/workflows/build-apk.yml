@@ -1,0 +1,72 @@
+
+name: Build Ghid Auto Plus APK
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/build-apk.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Prepare web files
+        run: |
+          mkdir -p android-app/www
+          cp index.html android-app/www/
+          cp confidentialitate.html android-app/www/
+          cp termeni.html android-app/www/
+          cp manifest.webmanifest android-app/www/
+          cp icon.svg android-app/www/
+
+      - name: Install Capacitor
+        working-directory: android-app
+        run: |
+          npm init -y
+          npm install @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7
+          cat > capacitor.config.json <<'EOF'
+          {
+            "appId": "ro.calconline.ghidautoplus",
+            "appName": "Ghid Auto Plus",
+            "webDir": "www"
+          }
+          EOF
+          npx cap add android
+
+      - name: Build APK
+        working-directory: android-app
+        run: |
+          npx cap sync android
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Ghid-Auto-Plus-APK
+          path: android-app/android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 7
